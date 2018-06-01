@@ -20,8 +20,9 @@ def select_name_and_motto_of_char_with_longest_motto
 def select_value_and_count_of_most_prolific_species
   <<-SQL
       SELECT value, COUNT(*)
-      FROM species
-      ORDER BY LENGTH(motto) DESC
+      FROM characters
+      GROUP BY species
+      ORDER BY COUNT(species) DESC
       LIMIT 1
     SQL
    end
